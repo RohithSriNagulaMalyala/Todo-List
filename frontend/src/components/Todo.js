@@ -17,7 +17,7 @@ function Todo() {
     const [filterStatus, setFilterStatus] = useState("");
 
     const fetchTodoList = useCallback(() => {
-        axios.get('http://127.0.0.1:3001/getTodoList', {
+        axios.get('https://todo-list-d209.onrender.com/getTodoList', {
             params: {
                 searchTerm,
                 sortField,
@@ -42,7 +42,7 @@ function Todo() {
             return;
         }
 
-        axios.post('http://127.0.0.1:3001/addTodoList', { task: newTask, status: newStatus, deadline: newDeadline })
+        axios.post('https://todo-list-d209.onrender.com', { task: newTask, status: newStatus, deadline: newDeadline })
             .then(res => {
                 setNewTask("");
                 setNewStatus("");
@@ -64,7 +64,7 @@ function Todo() {
             return;
         }
 
-        axios.post('http://127.0.0.1:3001/updateTodoList/' + id, editedData)
+        axios.post('https://todo-list-d209.onrender.com' + id, editedData)
             .then(result => {
                 setEditableId(null);
                 setEditedTask("");
@@ -76,7 +76,7 @@ function Todo() {
     };
 
     const deleteTask = (id) => {
-        axios.delete('http://127.0.0.1:3001/deleteTodoList/' + id)
+        axios.delete('https://todo-list-d209.onrender.com' + id)
             .then(result => {
                 fetchTodoList();
             })
