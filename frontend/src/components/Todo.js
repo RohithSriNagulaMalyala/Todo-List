@@ -42,7 +42,7 @@ function Todo() {
             return;
         }
 
-        axios.post('https://todo-list-d209.onrender.com/getTodoList', { task: newTask, status: newStatus, deadline: newDeadline })
+        axios.post('https://todo-list-d209.onrender.com/addTodoList', { task: newTask, status: newStatus, deadline: newDeadline })
             .then(res => {
                 setNewTask("");
                 setNewStatus("");
@@ -64,7 +64,7 @@ function Todo() {
             return;
         }
 
-        axios.post('https://todo-list-d209.onrender.com/getTodoList' + id, editedData)
+        axios.post('https://todo-list-d209.onrender.com/updateTodoList' + id, editedData)
             .then(result => {
                 setEditableId(null);
                 setEditedTask("");
@@ -76,7 +76,7 @@ function Todo() {
     };
 
     const deleteTask = (id) => {
-        axios.delete('https://todo-list-d209.onrender.com/getTodoList' + id)
+        axios.delete('https://todo-list-d209.onrender.com/deleteTodoList' + id)
             .then(result => {
                 fetchTodoList();
             })
